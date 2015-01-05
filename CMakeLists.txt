@@ -288,6 +288,10 @@ ADD_LIBRARY (cryptopp
     ${cryptopp_HEADERS}
 )
 
+IF (WIN32)
+    TARGET_LINK_LIBRARIES(cryptopp WS2_32)
+ENDIF (WIN32)
+
 IF (CRYPTOPP_BUILD_TESTS)
     ENABLE_TESTING ()
     # Generate your adhoc.cpp.proto

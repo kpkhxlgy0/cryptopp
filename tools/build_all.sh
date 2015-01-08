@@ -39,7 +39,7 @@ cp $DIR/Android.mk $DIR_TO_ANDROID/
 
 cd $DIR
 mkdir -p $DIR_INCLUDE
-find ../ -name '*.h' -exec cp {} $DIR_INCLUDE/ \;
+find ../ -name '*.h' -maxdepth 1 -exec cp {} $DIR_INCLUDE/ \;
 
 rm -rf $DIR/build_mac
 rm -rf $DIR/build_ios

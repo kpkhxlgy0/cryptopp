@@ -324,4 +324,11 @@ IF (CRYPTOPP_BUILD_TESTS)
     # Run test scripts
     ADD_TEST (NAME cryptopp_test_scripts
         COMMAND ${CMAKE_COMMAND} -E chdir ${CMAKE_CURRENT_SOURCE_DIR} $<TARGET_FILE:cryptest> tv TestVectors/all.txt)
+    IF (WIN32)
+        SET_TARGET_PROPERTIES(cryptest PROPERTIES COMPILE_FLAGS "/MP" ${BUILD_FLAGS})
+    ENDIF ()
+ENDIF ()
+
+IF (WIN32)
+    SET_TARGET_PROPERTIES(cryptopp PROPERTIES COMPILE_FLAGS "/MP" ${BUILD_FLAGS})
 ENDIF ()
